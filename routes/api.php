@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthController;
 use GuzzleHttp\Promise\Create;
 
 /*
@@ -19,6 +20,8 @@ use GuzzleHttp\Promise\Create;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/me', [AuthController::class, 'me']);
 
 Route::get('/book', [BookController::class, 'index']);
 Route::post('/book', [BookController::class, 'store']);
